@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% include 'layout.html' %}
+    <div class="container">
+        <h2>Sell Stock</h2>
+        <form action="/sell" method="post">
+            <div class="form-group">
+                <label for="symbol">Select Stock:</label>
+                <select name="symbol" id="symbol" required>
+                    {% for stock in stocks %}
+                        <option value="{{ stock.symbol }}">{{ stock.name }} ({{ stock.symbol }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="shares">Number of Shares:</label>
+                <input type="number" name="shares" id="shares" min="1" required>
+            </div>
+            <button type="submit">Sell</button>
+        </form>
+        {% if message %}
+            <div class="alert">{{ message }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

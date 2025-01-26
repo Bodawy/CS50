@@ -1,0 +1,6 @@
+Flask==2.0.3
+cs50==9.0.1
+werkzeug==2.0.3
+flask-session==0.4.0
+requests==2.26.0
+```
